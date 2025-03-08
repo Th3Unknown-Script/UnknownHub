@@ -150,7 +150,6 @@ end
 Animations:addToggle("🐍 Snake Crawl", function(state) toggleAnimation(state, "snake crawl") end)
 Animations:addToggle("🔒 Handcuff Animation", function(state) toggleAnimation(state, "cuffed") end)
 Animations:addToggle("🛑 Crouch Animation", function(state) toggleAnimation(state, "crouch") end)
-Animations:addToggle("⚡ Tased Animation", function(state) toggleAnimation(state, "tased") end)
 
 -- **Character Page**
 local Character = UI:addPage("🧍 Character", 2, false, 6)
@@ -204,7 +203,7 @@ end)
 local Cars = UI:addPage("🚗 Cars (Coming Soon)", 2, false, 6)
 Cars:addLabel("🚗 Cars Features", "Car Mods Coming Soon!")
 
--- local TEST = UI:addPage("TEST", 2, false, 6)
+local TEST = UI:addPage("TEST", 2, false, 6)
 TEST:addLabel("TEST", "TEST")
 
 
