@@ -43,7 +43,7 @@ end)
 local LP = UI:addPage("💵 Auto Farm", 2, false, 6)
 LP:addLabel("💵 Auto Farming", "All Farming Features")
 
-LP:addButton("⌨️🔐 ANTI-AFK", function()
+LP:addButton("🛡️ ANTI-AFK", function()
     loadstring(game:HttpGet("https://pastebin.com/raw/T9VDKXez"))()
 end)
 
