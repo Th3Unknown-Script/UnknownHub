@@ -6,129 +6,194 @@ script.Parent = game.StarterPlayer.StarterPlayerScripts
 
 task.wait(1)
 
-local player = game.Players.LocalPlayer
-local playerGui = player:FindFirstChild("PlayerGui")
+local GUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/aaaa"))()
 
-if not playerGui then return end  -- Safety check
+-- Create Main UI Window
+local UI = GUI:CreateWindow("🗝️ Unveiled | Best SL2 Script | Made by cor_s | [V2.4]", "Yes, it's true!")
 
-local screenGui = Instance.new("ScreenGui")
-screenGui.Parent = playerGui
-screenGui.Name = "LoadingScreen"
+-- **Main Page**
+local Home = UI:addPage("⚙️ Main", 1, true, 6)
+Home:addLabel("⚙️ Main Functions", "Essential Features")
 
--- Create blur effect
-local blurEffect = Instance.new("BlurEffect")
-blurEffect.Size = 25
-blurEffect.Parent = game.Lighting
+Home:addButton("🏠 Apartment Bypass", function()
+    local player = game.Players.LocalPlayer
+    local function clearInsideApartments()
+        while true do
+            local character = workspace:FindFirstChild(player.Name)
+            if character then
+                local apartments = character:FindFirstChild("InsideApartments")
+                if apartments then apartments:Destroy() end
+            end
+            wait(1)
+        end
+    end
+    task.spawn(clearInsideApartments)
+end)
 
--- Main Frame
-local frame = Instance.new("Frame")
-frame.Size = UDim2.new(0, 400, 0, 250)  -- Increased height to fit all text
-frame.Position = UDim2.new(0.5, -200, 0.5, -125)
-frame.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
-frame.BackgroundTransparency = 0.4
-frame.Parent = screenGui
+Home:addButton("📷 Remove Camera Shake", function()
+    local g_ = game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Camera_Bob")
+    if g_ then g_:Destroy() end
+end)
 
-local corner = Instance.new("UICorner")
-corner.CornerRadius = UDim.new(0, 12)
-corner.Parent = frame
+Home:addButton("🎁 Auto Gifts", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/5wQNYkTB"))()
+end)
 
--- UI Stroke (Subtle Border)
-local frameStroke = Instance.new("UIStroke")
-frameStroke.Color = Color3.fromRGB(255, 255, 255)
-frameStroke.Thickness = 1.5
-frameStroke.Transparency = 0.7
-frameStroke.Parent = frame
+-- **Auto Farm Page**
+local LP = UI:addPage("💵 Auto Farm", 2, false, 6)
+LP:addLabel("💵 Auto Farming", "All Farming Features")
 
--- Title Label
-local titleLabel = Instance.new("TextLabel")
-titleLabel.Text = "🔑 Unveiled | Best SL2 Script"
-titleLabel.Size = UDim2.new(1, 0, 0, 40)
-titleLabel.Position = UDim2.new(0, 0, 0, 10)
-titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-titleLabel.BackgroundTransparency = 1
-titleLabel.Font = Enum.Font.GothamSemibold
-titleLabel.TextSize = 28
-titleLabel.TextStrokeTransparency = 0.8
-titleLabel.Parent = frame
+local sugarFarmRunning = false
+LP:addToggle("🌿 Auto Sugar Farm", function(value)
+    sugarFarmRunning = value
+    spawn(function()
+        while sugarFarmRunning do
+            local targetCFrame = CFrame.new(185.41, -401.02, 664.97)
 
--- Update Section
-local bulletinsFrame = Instance.new("Frame")
-bulletinsFrame.Size = UDim2.new(1, -20, 0, 90)  -- Adjusted height to fit all text
-bulletinsFrame.Position = UDim2.new(0, 10, 0, 50)
-bulletinsFrame.BackgroundTransparency = 1
-bulletinsFrame.Parent = frame
+            local function findTargetPart()
+                for _, part in ipairs(workspace:GetDescendants()) do
+                    if part:IsA("BasePart") and (part.CFrame.Position - targetCFrame.Position).Magnitude < 0.1 then
+                        return part
+                    end
+                end
+                return nil
+            end
 
--- Update Title
-local updateTitleLabel = Instance.new("TextLabel")
-updateTitleLabel.Text = "🔄 UPDATE v2.4"
-updateTitleLabel.Size = UDim2.new(1, 0, 0, 20)
-updateTitleLabel.Position = UDim2.new(0, 0, 0, 0)
-updateTitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-updateTitleLabel.BackgroundTransparency = 1
-updateTitleLabel.Font = Enum.Font.GothamBold
-updateTitleLabel.TextSize = 22
-updateTitleLabel.TextStrokeTransparency = 0.8
-updateTitleLabel.Parent = bulletinsFrame
+            local targetPart = findTargetPart()
+            if targetPart then
+                for _, child in ipairs(targetPart:GetChildren()) do
+                    if child:IsA("ProximityPrompt") then
+                        fireproximityprompt(child)
+                    end
+                end
+            end
 
--- Update Details (Fixed Text Not Showing)
-local bulletPointsLabel = Instance.new("TextLabel")
-bulletPointsLabel.Text = [[
-⚙️ Whole new ui make over 🎉
-✅ Fixed script not showing bug 👾
-🔥 Auto skittles added
-👀 Free chains unlocked
-🚀 More updates coming soon!]]
-bulletPointsLabel.Size = UDim2.new(1, 0, 1, -20)
-bulletPointsLabel.Position = UDim2.new(0, 0, 0, 20)
-bulletPointsLabel.TextColor3 = Color3.fromRGB(220, 220, 220)
-bulletPointsLabel.BackgroundTransparency = 1
-bulletPointsLabel.Font = Enum.Font.Gotham
-bulletPointsLabel.TextSize = 16  -- Slightly smaller to fit all text
-bulletPointsLabel.TextWrapped = true  -- Ensures all text is visible
-bulletPointsLabel.TextYAlignment = Enum.TextYAlignment.Top
-bulletPointsLabel.Parent = bulletinsFrame
+            local UI = game:GetService("ReplicatedStorage").UI.SugarNPC
+            UI:FireServer("Purchase", "SugarCane")
+            wait(0.1)
+            UI:FireServer("Purchase", "BakingPowder")
 
--- Progress Bar Frame
-local progressBarFrame = Instance.new("Frame")
-progressBarFrame.Size = UDim2.new(0, 380, 0, 20)
-progressBarFrame.Position = UDim2.new(0, 10, 0, 200)  -- Adjusted position
-progressBarFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-progressBarFrame.Parent = frame
+            local player = game.Players.LocalPlayer
+            local backpack = player.Backpack
 
-local progressBarFrameCorner = Instance.new("UICorner")
-progressBarFrameCorner.CornerRadius = UDim.new(0, 10)
-progressBarFrameCorner.Parent = progressBarFrame
+            for _, item in ipairs({"BakingPowder", "SugarCane"}) do
+                if backpack:FindFirstChild(item) then
+                    backpack[item].Parent = player.Character
+                end
+            end
 
-local progressBar = Instance.new("Frame")
-progressBar.Size = UDim2.new(0, 0, 1, 0)
-progressBar.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-progressBar.Parent = progressBarFrame
+            wait(0.1)
+            UI:FireServer("Sell")
 
-local progressBarCorner = Instance.new("UICorner")
-progressBarCorner.CornerRadius = UDim.new(0, 10)
-progressBarCorner.Parent = progressBar
-
--- Animate Progress Bar
-local TweenService = game:GetService("TweenService")
-local tweenInfo = TweenInfo.new(4, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
-
-local progressTween = TweenService:Create(progressBar, tweenInfo, {Size = UDim2.new(1, 0, 1, 0)})
-progressTween:Play()
-
--- Improved Async Removal of Loading Screen
-local function removeLoadingScreenAsync()
-    spawn(function()  -- Run asynchronously to avoid blocking the main thread
-        wait(7)  -- Wait before removing
-        blurEffect:Destroy()
-        screenGui:Destroy()
-        
-        -- Load Main Script
-        loadstring(game:HttpGet("https://pastebin.com/raw/2wRVPBpY"))()
+            if not sugarFarmRunning then break end
+            wait(1.5)
+        end
     end)
+end)
+
+-- **Combat Page**
+local combatPage = UI:addPage("🎯 Combat", 2, false, 6)
+combatPage:addLabel("🎯 Combat Features", "PvP & Combat Tools")
+
+combatPage:addButton("🎯 Aimbot (Mobile Support)", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/m9Q1s7sg"))()
+end)
+
+combatPage:addButton("🧠 Head Expander", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/T03iK6Ay"))()
+end)
+
+combatPage:addButton("👀 Highlight ESP (PvP Checker)", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/QcEsWdLY"))()
+end)
+
+combatPage:addButton("📍 Track Lines (PvP Checker)", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/CHpQhRcv"))()
+end)
+
+-- **Animations Page**
+local Animations = UI:addPage("🏃 Animations", 2, false, 6)
+Animations:addLabel("🏃 Animations", "All Animation Features")
+
+local animationTracks = {}
+
+local function toggleAnimation(state, animationName)
+    local player = game.Players.LocalPlayer
+    local humanoid = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+    if not humanoid then return end
+
+    local animator = humanoid:FindFirstChildOfClass("Animator") or Instance.new("Animator", humanoid)
+
+    if state then
+        for _, anim in ipairs(workspace:GetDescendants()) do
+            if anim:IsA("Animation") and anim.Name:lower():find(animationName) then
+                local track = animator:LoadAnimation(anim)
+                track:Play()
+                animationTracks[animationName] = track
+                return
+            end
+        end
+    else
+        if animationTracks[animationName] then
+            animationTracks[animationName]:Stop()
+            animationTracks[animationName]:Destroy()
+            animationTracks[animationName] = nil
+        end
+    end
 end
 
-removeLoadingScreenAsync()  -- Call the function asynchronously
+Animations:addToggle("🐍 Snake Crawl", function(state) toggleAnimation(state, "snake crawl") end)
+Animations:addToggle("🔒 Handcuff Animation", function(state) toggleAnimation(state, "cuffed") end)
+Animations:addToggle("🛑 Crouch Animation", function(state) toggleAnimation(state, "crouch") end)
+
+-- **Character Page**
+local Character = UI:addPage("🧍 Character", 2, false, 6)
+Character:addLabel("🧍 Character Features", "All Character Mods")
+
+Character:addButton("🍬 Auto Skittles", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/eB7W81Ey"))()
+end)
+
+Character:addButton("⚡ Infinite Stamina", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/Z5JQtqeP"))()
+end)
+
+Character:addButton("🍔 Infinite Hunger", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/aeZxPh0x"))()
+end)
+
+Character:addButton("☯️ Infinite Karma", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/5NPtManB"))()
+end)
+
+Character:addLabel("👕 Customization", "Clothing & Accessories")
+
+Character:addButton("🔗 CrossChain", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/EuTmKu63"))()
+end)
+
+Character:addButton("💎 HunnidChain", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/PQCY6Wd1"))()
+end)
+
+Character:addLabel("👟 Shoes & Add-ons", "Buy Available Shoes")
+
+Character:addButton("🎄 Xmas Shoes [$200]", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/nZip8SyM"))()
+end)
+
+Character:addButton("🥇 Gold Xmas Shoes [$200]", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/Hu4e1mkB"))()
+end)
+
+Character:addButton("🔴 Redmas Shoes [$200]", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/AaaQCUij"))()
+end)
+
+-- **Cars Page (Coming Soon)**
+local Cars = UI:addPage("🚗 Cars (Coming Soon)", 2, false, 6)
+Cars:addLabel("🚗 Cars Features", "Car Mods Coming Soon!")
 
 
 
-warn("UnknownHub.")
+warn("UnknownHub!")
