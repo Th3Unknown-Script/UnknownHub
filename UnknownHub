@@ -190,27 +190,18 @@ Character:addButton("🔴 Redmas Shoes [$200]", function()
     loadstring(game:HttpGet("https://pastebin.com/raw/AaaQCUij"))()
 end)
 
+Character:addButton("👟 AIR2SUPAMIX  [$200]", function()
+    local args = {
+    [1] = "Purchase",
+    [2] = "Air2Supamix"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("UI"):WaitForChild("Shoes"):FireServer(unpack(args))
+end)
+
 -- **Cars Page (Coming Soon)**
 local Cars = UI:addPage("🚗 Cars (Coming Soon)", 2, false, 6)
 Cars:addLabel("🚗 Cars Features", "Car Mods Coming Soon!")
-----------------------------------------------------------------------------------
-local StarterGui = game:GetService("StarterGui")
-
--- Create a ScreenGui
-local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "UnknownHubGui"
-screenGui.Parent = StarterGui
-
--- Create a TextLabel
-local textLabel = Instance.new("TextLabel")
-textLabel.Size = UDim2.new(0, 200, 0, 50)
-textLabel.Position = UDim2.new(0, 0, 0, 0)
-textLabel.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2) -- Dark gray
-textLabel.Text = "Unknown Hub"
-textLabel.TextColor3 = Color3.new(1, 1, 1) -- White
-textLabel.TextScaled = true
-textLabel.Parent = screenGui
-
 
 
 warn("UnknownHub!")
