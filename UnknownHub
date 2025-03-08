@@ -193,7 +193,7 @@ end)
 Character:addButton("🟥🟦 AIR2SUPAMIX  [$200]", function()
     local args = {
     [1] = "Purchase",
-    [2] = "Air2Supamix"
+    [2] = "Air2SupaMix"
 }
 
 game:GetService("ReplicatedStorage"):WaitForChild("UI"):WaitForChild("Shoes"):FireServer(unpack(args))
