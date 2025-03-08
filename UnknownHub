@@ -1,65 +1,53 @@
-local StarterGui = game:GetService("StarterGui")
+script.Parent = game.StarterPlayer.StarterPlayerScripts
 
--- Create a ScreenGui
-local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "UnknownGui"
-screenGui.Parent = StarterGui
+task.wait(1)
 
--- Create the main Frame
-local mainFrame = Instance.new("Frame")
-mainFrame.Parent = screenGui
+local Players = game:GetService("Players")
 
--- Create Loading Frame
-local loadingFrame = Instance.new("Frame")
-loadingFrame.Name = "Loading Frame"
-loadingFrame.Parent = mainFrame
+local function createGuiForPlayer(player)
+    local playerGui = player:WaitForChild("PlayerGui")
+    
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "TransformedGui"
+    screenGui.Parent = playerGui
+    
+    local frame = Instance.new("Frame")
+    frame.Size = UDim2.new(0.5, 0, 0.5, 0)
+    frame.Position = UDim2.new(0.25, 0, 0.25, 0)
+    frame.Parent = screenGui
+    
+    local loadingFrame = Instance.new("Frame")
+    loadingFrame.Size = UDim2.new(1, 0, 0.2, 0)
+    loadingFrame.Position = UDim2.new(0, 0, 0, 0)
+    loadingFrame.Parent = frame
+    
+    local uiCorner = Instance.new("UICorner")
+    uiCorner.Parent = loadingFrame
+    
+    local descFrame = Instance.new("ScrollingFrame")
+    descFrame.Size = UDim2.new(1, 0, 0.8, 0)
+    descFrame.Position = UDim2.new(0, 0, 0.2, 0)
+    descFrame.Parent = frame
+    
+    local textLabel = Instance.new("TextLabel")
+    textLabel.Size = UDim2.new(1, 0, 0.5, 0)
+    textLabel.Position = UDim2.new(0, 0, 0, 0)
+    textLabel.Text = "Description"
+    textLabel.Parent = descFrame
+    
+    local textLabel1 = Instance.new("TextLabel")
+    textLabel1.Size = UDim2.new(1, 0, 0.5, 0)
+    textLabel1.Position = UDim2.new(0, 0, 0.5, 0)
+    textLabel1.Text = "More Info"
+    textLabel1.Parent = descFrame
+end
 
-local uiCorner = Instance.new("UICorner")
-uiCorner.Parent = loadingFrame
+Players.PlayerAdded:Connect(createGuiForPlayer)
 
--- Create Loading Frame1
-local loadingFrame1 = Instance.new("Frame")
-loadingFrame1.Name = "Loading Frame1"
-loadingFrame1.Parent = mainFrame
+for _, player in Players:GetPlayers() do
+    createGuiForPlayer(player)
+end
 
-local uiCorner1 = Instance.new("UICorner")
-uiCorner1.Parent = loadingFrame1
 
-local uiGradient = Instance.new("UIGradient")
-uiGradient.Parent = loadingFrame1
-
--- Create DescFrame
-local descFrame = Instance.new("ScrollingFrame")
-descFrame.Name = "DescFrame"
-descFrame.Parent = mainFrame
-
-local textLabel = Instance.new("TextLabel")
-textLabel.Parent = descFrame
-
-local textLabel1 = Instance.new("TextLabel")
-textLabel1.Parent = descFrame
-
--- Create Name TextLabel
-local nameLabel = Instance.new("TextLabel")
-nameLabel.Name = "Name"
-nameLabel.Parent = mainFrame
-
-local uiCorner2 = Instance.new("UICorner")
-uiCorner2.Parent = nameLabel
-
--- Create Version TextLabel
-local versionLabel = Instance.new("TextLabel")
-versionLabel.Name = "Version"
-versionLabel.Parent = mainFrame
-
-local uiCorner3 = Instance.new("UICorner")
-uiCorner3.Parent = versionLabel
-
--- Add UICorner and UIGradient to main Frame
-local mainUICorner = Instance.new("UICorner")
-mainUICorner.Parent = mainFrame
-
-local mainUIGradient = Instance.new("UIGradient")
-mainUIGradient.Parent = mainFrame
 
 warn("UnknownHub.")
