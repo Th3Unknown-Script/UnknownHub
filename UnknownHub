@@ -9,7 +9,7 @@ task.wait(1)
 local GUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/aaaa"))()
 
 -- Create Main UI Window
-local UI = GUI:CreateWindow("🫃 UnknownHub | Best SL2 Script | Made by Unknwon | [V3]", "Yes, it's true!")
+local UI = GUI:CreateWindow("UnknownHub | Best SL2 Script | Made by Unknown | [V2]", "Yes, it's true!")
 
 -- **Main Page**
 local Home = UI:addPage("⚙️ Main", 1, true, 6)
