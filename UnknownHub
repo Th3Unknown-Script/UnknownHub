@@ -44,6 +44,9 @@ local LP = UI:addPage("💵 Auto Farm", 2, false, 6)
 LP:addLabel("💵 Auto Farming", "All Farming Features")
 
 local sugarFarmRunning = false
+LP:addButton("⌨️ Anti-AFK")", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/T9VDKXez"))()
+end)
 LP:addToggle("🌿 Auto Sugar Farm", function(value)
     sugarFarmRunning = value
     spawn(function()
