@@ -43,10 +43,12 @@ end)
 local LP = UI:addPage("💵 Auto Farm", 2, false, 6)
 LP:addLabel("💵 Auto Farming", "All Farming Features")
 
-local sugarFarmRunning = false
-LP:addButton("⌨️ Anti-AFK")", function()
+LP:addButton("⌨️🔐 ANTI-AFK", function()
     loadstring(game:HttpGet("https://pastebin.com/raw/T9VDKXez"))()
 end)
+
+local sugarFarmRunning = false
+
 LP:addToggle("🌿 Auto Sugar Farm", function(value)
     sugarFarmRunning = value
     spawn(function()
@@ -201,6 +203,9 @@ end)
 -- **Cars Page (Coming Soon)**
 local Cars = UI:addPage("🚗 Cars (Coming Soon)", 2, false, 6)
 Cars:addLabel("🚗 Cars Features", "Car Mods Coming Soon!")
+
+-- local TEST = UI:addPage("TEST", 2, false, 6)
+TEST:addLabel("TEST", "TEST")
 
 
 warn("UnknownHub!")
