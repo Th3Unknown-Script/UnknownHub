@@ -43,10 +43,6 @@ end)
 local LP = UI:addPage("💵 Auto Farm", 2, false, 6)
 LP:addLabel("💵 Auto Farming", "All Farming Features")
 
-LP:addButton("🛡️ ANTI-AFK", function()
-    loadstring(game:HttpGet("https://pastebin.com/raw/T9VDKXez"))()
-end)
-
 local sugarFarmRunning = false
 
 LP:addToggle("🌿 Auto Sugar Farm", function(value)
@@ -94,6 +90,10 @@ LP:addToggle("🌿 Auto Sugar Farm", function(value)
             wait(1.5)
         end
     end)
+end)
+
+LP:addButton("🛡️ ANTI-AFK", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/T9VDKXez"))()
 end)
 
 -- **Combat Page**
