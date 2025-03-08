@@ -195,8 +195,8 @@ Character:addButton("🔴 Redmas Shoes [$200]", function()
     loadstring(game:HttpGet("https://pastebin.com/raw/AaaQCUij"))()
 end)
 
-Character:addButton("👟 Air4Uncs Shoes [$???]", function()
-    loadstring(game:HttpGet("https://pastebin.com/WU7WH2pc"))()
+Character:addButton("👟 AirRunners Shoes [$???]", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/iZ4A9arz"))()
 end)
 
 Character:addButton("MADE BY UNKNOWN", function()
