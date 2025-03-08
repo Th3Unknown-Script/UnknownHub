@@ -9,7 +9,7 @@ task.wait(1)
 local GUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/aaaa"))()
 
 -- Create Main UI Window
-local UI = GUI:CreateWindow("🗝️ Unveiled | Best SL2 Script | Made by cor_s | [V2.4]", "Yes, it's true!")
+local UI = GUI:CreateWindow("🗝️ Unveiled | Best SL2 Script | Made by Unknwon | [V3]", "Yes, it's true!")
 
 -- **Main Page**
 local Home = UI:addPage("⚙️ Main", 1, true, 6)
@@ -193,6 +193,23 @@ end)
 -- **Cars Page (Coming Soon)**
 local Cars = UI:addPage("🚗 Cars (Coming Soon)", 2, false, 6)
 Cars:addLabel("🚗 Cars Features", "Car Mods Coming Soon!")
+----------------------------------------------------------------------------------
+local StarterGui = game:GetService("StarterGui")
+
+-- Create a ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "UnknownHubGui"
+screenGui.Parent = StarterGui
+
+-- Create a TextLabel
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(0, 200, 0, 50)
+textLabel.Position = UDim2.new(0, 0, 0, 0)
+textLabel.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2) -- Dark gray
+textLabel.Text = "Unknown Hub"
+textLabel.TextColor3 = Color3.new(1, 1, 1) -- White
+textLabel.TextScaled = true
+textLabel.Parent = screenGui
 
 
 
