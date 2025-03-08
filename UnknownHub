@@ -1,0 +1,65 @@
+local StarterGui = game:GetService("StarterGui")
+
+-- Create a ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "UnknownGui"
+screenGui.Parent = StarterGui
+
+-- Create the main Frame
+local mainFrame = Instance.new("Frame")
+mainFrame.Parent = screenGui
+
+-- Create Loading Frame
+local loadingFrame = Instance.new("Frame")
+loadingFrame.Name = "Loading Frame"
+loadingFrame.Parent = mainFrame
+
+local uiCorner = Instance.new("UICorner")
+uiCorner.Parent = loadingFrame
+
+-- Create Loading Frame1
+local loadingFrame1 = Instance.new("Frame")
+loadingFrame1.Name = "Loading Frame1"
+loadingFrame1.Parent = mainFrame
+
+local uiCorner1 = Instance.new("UICorner")
+uiCorner1.Parent = loadingFrame1
+
+local uiGradient = Instance.new("UIGradient")
+uiGradient.Parent = loadingFrame1
+
+-- Create DescFrame
+local descFrame = Instance.new("ScrollingFrame")
+descFrame.Name = "DescFrame"
+descFrame.Parent = mainFrame
+
+local textLabel = Instance.new("TextLabel")
+textLabel.Parent = descFrame
+
+local textLabel1 = Instance.new("TextLabel")
+textLabel1.Parent = descFrame
+
+-- Create Name TextLabel
+local nameLabel = Instance.new("TextLabel")
+nameLabel.Name = "Name"
+nameLabel.Parent = mainFrame
+
+local uiCorner2 = Instance.new("UICorner")
+uiCorner2.Parent = nameLabel
+
+-- Create Version TextLabel
+local versionLabel = Instance.new("TextLabel")
+versionLabel.Name = "Version"
+versionLabel.Parent = mainFrame
+
+local uiCorner3 = Instance.new("UICorner")
+uiCorner3.Parent = versionLabel
+
+-- Add UICorner and UIGradient to main Frame
+local mainUICorner = Instance.new("UICorner")
+mainUICorner.Parent = mainFrame
+
+local mainUIGradient = Instance.new("UIGradient")
+mainUIGradient.Parent = mainFrame
+
+warn("UnknownHub.")
