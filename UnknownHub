@@ -190,7 +190,7 @@ Character:addButton("🔴 Redmas Shoes [$200]", function()
     loadstring(game:HttpGet("https://pastebin.com/raw/AaaQCUij"))()
 end)
 
-Character:addButton("👟 AIR2SUPAMIX  [$200]", function()
+Character:addButton("🟥🟦 AIR2SUPAMIX  [$200]", function()
     local args = {
     [1] = "Purchase",
     [2] = "Air2Supamix"
