@@ -174,4 +174,3 @@ while task.wait(60) do
 		DailySpinOpen.OpenEvent.T.Text = "Cooldown :"..math.min(20, math.max(0, 20 - math.round((os.time() - workspace.ZombieCooldown.Value) / 60))).."MIN"
 	end
 end
-
