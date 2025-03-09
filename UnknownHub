@@ -6,7 +6,7 @@ script.Parent = game.StarterPlayer.StarterPlayerScripts
 
 task.wait(1)
 
-local GUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/aaaa"))()
+local GUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/Th3Unknown-Script/UnknownHubGui/refs/heads/main/MainGui"))()
 
 -- Create Main UI Window
 local UI = GUI:CreateWindow("UnknownHub | Best SL2 Script | Made by Unknown | [V2]", "Yes, it's true!")
