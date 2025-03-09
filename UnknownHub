@@ -1,1 +1,177 @@
+-- Decompiler will be improved soon!
+-- Decompiled with Konstant V2.1, a fast Luau decompiler made in Luau by plusgiant5 (https://discord.gg/wyButjTMhM)
+-- Decompiled on 2025-03-09 12:22:09
+-- Luau version 6, Types version 3
+-- Time taken: 0.005269 seconds
+
+repeat
+	wait(1)
+until game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid")
+repeat
+	wait(1)
+until game.Players.LocalPlayer:FindFirstChild("Valuestats")
+local tbl_upvr = {"150\xA3", "500\xA3", "450\xA3", "1.5X MONEY", "1,000\xA3", "1,500\xA3", "5,000\xA3", "3X MONEY", "MELEE", "FIREARM", "20,000\xA3", "RARE ITEM", "LEGENDARY SNEAKERS", "LEGENDARY VEHICLE", "LEGENDARY ITEM"}
+local var2_upvw = false
+local function check_upvr() -- Line 26, Named "check"
+	if 86400 <= os.time() - game.Players.LocalPlayer.Valuestats.Dailyspin.Value then
+		script.Parent.Hrs.TextColor3 = Color3.fromRGB(6, 104, 0)
+		script.Parent.Hrs.Text = "READY !"
+		script.Parent.REspin.TextLabel.Text = "SPIN!"
+		game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Open.T.Visible = true
+		game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Open.A.Visible = true
+	else
+		script.Parent.Hrs.TextColor3 = Color3.fromRGB(104, 104, 104)
+		script.Parent.REspin.TextLabel.Text = "RESPIN!"
+		script.Parent.Hrs.Text = math.max(0, 24 - math.round((os.time() - game.Players.LocalPlayer.Valuestats.Dailyspin.Value) / 3600)).." HOURS"
+		game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Open.T.Visible = false
+		game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Open.A.Visible = false
+		local var4_upvw
+		var4_upvw = spawn(function() -- Line 49
+			--[[ Upvalues[1]:
+				[1]: var4_upvw (read and write)
+			]]
+			while wait(3600) do
+				script.Parent.Hrs.Text = math.max(0, 24 - math.round((os.time() - game.Players.LocalPlayer.Valuestats.Dailyspin.Value) / 3600)).." HOURS"
+				if 86400 <= os.time() - game.Players.LocalPlayer.Valuestats.Dailyspin.Value then
+					script.Parent.Hrs.TextColor3 = Color3.fromRGB(6, 104, 0)
+					script.Parent.Hrs.Text = "READY !"
+					script.Parent.REspin.TextLabel.Text = "SPIN!"
+					var4_upvw:Disconnect()
+					return
+				end
+			end
+		end)
+	end
+end
+script.Refresh.Changed:Connect(check_upvr)
+check_upvr()
+local var5_upvw = false
+local var6_upvw = false
+local function SPIN_upvr() -- Line 71, Named "SPIN"
+	--[[ Upvalues[4]:
+		[1]: var5_upvw (read and write)
+		[2]: var6_upvw (read and write)
+		[3]: tbl_upvr (readonly)
+		[4]: check_upvr (readonly)
+	]]
+	-- KONSTANTERROR: [0] 1. Error Block 1 start (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [0] 1. Error Block 1 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [348] 210. Error Block 37 start (CF ANALYSIS FAILED)
+	if var6_upvw == false then
+		var6_upvw = true
+		game.ReplicatedStorage.UI.DAILYSPIN:FireServer("Respin")
+		wait(1)
+		var6_upvw = false
+	end
+	-- KONSTANTERROR: [348] 210. Error Block 37 end (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [371] 226. Error Block 36 start (CF ANALYSIS FAILED)
+	-- KONSTANTERROR: [371] 226. Error Block 36 end (CF ANALYSIS FAILED)
+end
+script.Parent.Redeem.Redeem.MouseButton1Down:Connect(function() -- Line 170
+	--[[ Upvalues[1]:
+		[1]: var5_upvw (read and write)
+	]]
+	var5_upvw = false
+	game.ReplicatedStorage.UI.DAILYSPIN:FireServer("Redeem")
+	script.Parent.Redeem.Money:Play()
+	script.Parent.Redeem.Visible = false
+	script.Parent.Close.Visible = true
+end)
+script.Parent.Close.MouseButton1Down:Connect(function() -- Line 177
+	if script.Parent.Close.Visible == true then
+		script.Parent.Enabled = false
+		game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Enabled = true
+	end
+end)
+script.Parent.Close.MouseEnter:Connect(function() -- Line 183
+	--[[ Upvalues[1]:
+		[1]: var2_upvw (read and write)
+	]]
+	var2_upvw = true
+	script.Parent.Close.TextColor3 = Color3.fromRGB(255, 157, 0)
+end)
+script.Parent.Close.MouseLeave:Connect(function() -- Line 187
+	--[[ Upvalues[1]:
+		[1]: var2_upvw (read and write)
+	]]
+	var2_upvw = false
+	script.Parent.Close.TextColor3 = Color3.fromRGB(255, 0, 0)
+end)
+script.Parent.REspin.MouseButton1Down:Connect(function() -- Line 191
+	--[[ Upvalues[1]:
+		[1]: SPIN_upvr (readonly)
+	]]
+	SPIN_upvr()
+end)
+script.Parent.REspin.MouseEnter:Connect(function() -- Line 194
+	script.Parent.REspin.TextLabel.TextColor3 = Color3.fromRGB(0, 170, 28)
+end)
+script.Parent.REspin.MouseLeave:Connect(function() -- Line 197
+	script.Parent.REspin.TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+end)
+game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Open.MouseEnter:Connect(function() -- Line 200
+	game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Open.Clic.TextColor3 = Color3.fromRGB(0, 170, 28)
+end)
+game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Open.MouseLeave:Connect(function() -- Line 203
+	game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Open.Clic.TextColor3 = Color3.fromRGB(0, 136, 255)
+end)
+game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Open.MouseButton1Down:Connect(function() -- Line 206
+	if script.Parent.Enabled == false then
+		script.Parent.Enabled = true
+		game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Enabled = false
+	end
+end)
+game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Close.MouseButton1Down:Connect(function() -- Line 212
+	if game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Open.Visible == true then
+		game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Open.Visible = false
+		game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Close.Text = '+'
+		game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Close.TextTransparency = 0.9
+		game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Close.BackgroundTransparency = 0.9
+	else
+		game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Open.Visible = true
+		game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Close.Text = 'X'
+		game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Close.TextTransparency = 0
+		game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Close.BackgroundTransparency = 0
+	end
+end)
+game.Players.LocalPlayer.PlayerGui.DailySpinOpen.OpenEvent.MouseButton1Down:Connect(function() -- Line 229
+	if game.Players.LocalPlayer.PlayerGui.ZombieEvent.Enabled == false then
+		game.Players.LocalPlayer.PlayerGui.ZombieEvent.Enabled = true
+		game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Enabled = false
+	end
+end)
+local MarketplaceService_upvr = game:GetService("MarketplaceService")
+game.Players.LocalPlayer.PlayerGui.ZombieEvent.Frame.StartEvent.MouseButton1Down:Connect(function() -- Line 235
+	--[[ Upvalues[1]:
+		[1]: MarketplaceService_upvr (readonly)
+	]]
+	if 1200 <= os.time() - workspace.ZombieCooldown.Value then
+		MarketplaceService_upvr:PromptProductPurchase(game.Players.LocalPlayer, 1669084998)
+		task.wait(0.1)
+		game.Players.LocalPlayer.PlayerGui.ZombieEvent.Enabled = false
+		game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Enabled = true
+	end
+end)
+game.Players.LocalPlayer.PlayerGui.ZombieEvent.Frame.Exit.MouseButton1Down:Connect(function() -- Line 244
+	game.Players.LocalPlayer.PlayerGui.ZombieEvent.Enabled = false
+	game.Players.LocalPlayer.PlayerGui.DailySpinOpen.Enabled = true
+end)
+game.Players.LocalPlayer.PlayerGui.ZombieEvent.Frame.Exit.MouseEnter:Connect(function() -- Line 248
+	game.Players.LocalPlayer.PlayerGui.ZombieEvent.Frame.Exit.TextColor3 = Color3.fromRGB(255, 0, 0)
+end)
+game.Players.LocalPlayer.PlayerGui.ZombieEvent.Frame.Exit.MouseLeave:Connect(function() -- Line 251
+	game.Players.LocalPlayer.PlayerGui.ZombieEvent.Frame.Exit.TextColor3 = Color3.fromRGB(255, 64, 0)
+end)
+game.Players.LocalPlayer.PlayerGui.ZombieEvent.Frame.OpenEvent.MouseEnter:Connect(function() -- Line 254
+	game.Players.LocalPlayer.PlayerGui.ZombieEvent.Frame.OpenEvent.Size = UDim2.new(0.815, 0, 0.246, 0)
+end)
+game.Players.LocalPlayer.PlayerGui.ZombieEvent.Frame.OpenEvent.MouseLeave:Connect(function() -- Line 257
+	game.Players.LocalPlayer.PlayerGui.ZombieEvent.Frame.OpenEvent.Size = UDim2.new(0.733, 0, 0.221, 0)
+end)
+while task.wait(60) do
+	local DailySpinOpen = game.Players.LocalPlayer.PlayerGui.DailySpinOpen
+	if DailySpinOpen then
+		DailySpinOpen.OpenEvent.T.Text = "Cooldown :"..math.min(20, math.max(0, 20 - math.round((os.time() - workspace.ZombieCooldown.Value) / 60))).."MIN"
+	end
+end
 
